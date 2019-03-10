@@ -6,7 +6,7 @@ int main(){
     double Num1, Num2;
     char sign;
 
-    while (sign != "E"){
+    while (sign != "A"){
         scanf("%f %c %f", &Num1, &sign, &Num2);
         switch(sign){
             case '+':
