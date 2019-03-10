@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "CalcFunctions.c"
 
 int main(){
     int error;

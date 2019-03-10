@@ -11,6 +11,7 @@
 геометрическая последовательность.
 */
 #include <stdio.h>
+#include <math.h>
 
 
 /*
@@ -20,22 +21,59 @@
 @throws ошибок не найдено (0), есть ошибка[-и] (1);
 */
 double dev(double Num1, double Num2, int error){
-    if (0 == Num2){
-        error = 1;
-        return 0;
+    if (0 != Num2){
+        error = 0;
+        return Num1 / Num2;   
     }
-    error = 0;
-    return Num1 / Num2;
+    error = 1;
+    return 0;    
 }
 
 
 /*
-@exempl ...;
-@param ...;
-@return ...;
-@throws ...;
+@exempl (квадратный корень числа) sqrt(4) = 2;
+@param Num1 (подкоренное значение), error (возможные ошибки);
+@return sqrt(Num1) or error;
+@throws ошибок не найдено (0), есть ошибка[-и] (3);
 */
-double ...(...){
+double root(double Num1 int error){
+    if (Num1 > 0){
+        error = 0;
+        return sqrt(Num1);
+    }
+    error = 3;
+    return 0;        
+}
+
+
+/*
+@exempl (модуль числа) |-4| = 4;
+@param Num1 (число в модуле);
+@return |Num1|;
+@throws ошибок не найдено (0);
+*/
+double module(double Num1, int error){
+    if (0 <= Num1){
+        error = 0;
+        return Num1;
+    }
+    error = 0;
+    return Num1 * (-1);
 
 }
 
+
+/*
+@exempl (геоиетрическая последовательность) Sn = 2 * (1 - 2^4) / (1 - 2) = 30;
+@param Num1 (первоначальное число), Num2 (шаг), Num3 (номер члена геометрической прогрессии);
+@return сумма геометрической прогрессии и произведение геометрической прогрессии or error;
+@throws ошибок не найдено (0), есть ошибка[-и] (4);
+*/
+double geo_prog(double Num1, double Num2, double Num3, int error){
+    if (1 != Num2){
+        error = 0;
+        return Num1 * (1 - pow(Num2, Num3)) / (1 - Num2);
+    }
+    error = 4;
+    return 0;
+}
