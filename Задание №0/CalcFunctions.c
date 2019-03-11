@@ -22,10 +22,10 @@
 */
 double dev(double Num1, double Num2, int error){
     if (0 != Num2){
-        error = 0;
+        *error = 0;
         return Num1 / Num2;   
     }
-    error = 1;
+    *error = 1;
     return 0;    
 }
 
@@ -36,12 +36,12 @@ double dev(double Num1, double Num2, int error){
 @return sqrt(Num1) or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (3);
 */
-double root(double Num1 int error){
+double root(double Num1, int error){
     if (Num1 > 0){
-        error = 0;
+        *error = 0;
         return sqrt(Num1);
     }
-    error = 3;
+    *error = 3;
     return 0;        
 }
 
@@ -54,10 +54,10 @@ double root(double Num1 int error){
 */
 double module(double Num1, int error){
     if (0 <= Num1){
-        error = 0;
+        *error = 0;
         return Num1;
     }
-    error = 0;
+    *error = 0;
     return Num1 * (-1);
 
 }
@@ -71,9 +71,9 @@ double module(double Num1, int error){
 */
 double geo_prog(double Num1, double Num2, double Num3, int error){
     if (1 != Num2){
-        error = 0;
+        *error = 0;
         return Num1 * (1 - pow(Num2, Num3)) / (1 - Num2);
     }
-    error = 4;
+    *error = 4;
     return 0;
 }
