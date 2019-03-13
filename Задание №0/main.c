@@ -5,38 +5,9 @@ int main(){
     int error;
     double Num1, Num2, Num3;
     char sign;
-
-    while (sign != 'S'){
-        scanf("%f %c %f", &Num1, &sign, &Num2);
-        switch(sign){
-            case '+':
-                printf("%f + %f = %f", Num1, Num2, Num1 + Num2);
-                error = 0;
-                break;
-            case '-':
-                printf("%f - %f = %f", Num1, Num2, Num1 - Num2);
-                error = 0;
-                break;
-            case '*':
-                printf("%f * %f = %f", Num1, Num2, Num1 * Num2);
-                error = 0;
-                break;
-            case '/':
-                printf("%f / %f = %f", Num1, Num2, dev(Num1, Num2, &error));
-                break;
-            case 'S':
-                printf("sqrt(%f) = %f", Num1, root(Num1, &error));
-                break;
-            case 'M':
-                printf("|%f| = %f", Num1, computeModule(Num1, &error));
-                break;
-            case 'N':
-                printf("Добрый день!!!\n Вы работаете с операцией 'геометрическая прогрессия'\n Вы указали\n начальный член a0 = %f\n шаг q = %f\n укажите номер члена последовательности, чтоб завершить операцию :", Num1, Num2);
-                computeGeoProg(Num1, Num2, &error);
-            
-            default:
-                error = 2;
-        }
+    sign = 0;
+    pritf("to exit press 'e'\n");
+    while (sign != 'e'){
         switch (error){
             case 6:
                 printf("n < 0, n must be greater then 0 :(");
@@ -57,6 +28,39 @@ int main(){
                 printf("cannot be divided by 0\n");
                 break;
         }
+        error = 0;
+        scanf("%lg %c %lg", &Num1, &sign, &Num2);
+        switch(sign){
+            case '+':
+                printf("%lg + %lg = %lg\n", Num1, Num2, Num1 + Num2);
+                break;
+            case '-':
+                printf("%lg - %lg = %lg\n", Num1, Num2, Num1 - Num2);
+                break;
+            case '*':
+                printf("%lg * %lg = %lg\n", Num1, Num2, Num1 * Num2);
+                break;
+            case '/':
+                Num3 = dev(Num1, Num2, &error);
+                if (0 == error)
+                    printf("%lg / %lg = %lg\n", Num1, Num2, Num3);
+                break;
+            case 'S':
+                Num2 = root(Num1, &error);
+                if (0 == error)
+                    printf("sqrt(%lg) = %lg\n", Num1, Num2);
+                break;
+            case 'M':
+                printf("|%lg| = %lg\n", Num1, computeModule(Num1, &error));
+                break;
+            case 'G':
+                computeGeoProg(Num1, Num2, &error);
+                break;
+            
+            default:
+                error = 2;
+                break;
+        }
+        return 0;
     }
-    return 0;
 }

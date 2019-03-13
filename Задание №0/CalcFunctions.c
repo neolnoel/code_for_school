@@ -70,22 +70,25 @@ double computeModule(double Num1, int *error){
 @throws ошибок не найдено (0), есть ошибка[-и] (4, 5, 6);
 */
 double computeGeoProg(double a0, int q, int *error){
-    if (0 > q){
-        int geoSum, n, geoCump, i;
+    if (q > 0){
+        double geoSum, geoCump;
+        int n, i;
         geoSum = 0;
         geoCump = 1;
-        i = a0;
+        printf("enter number of members: ");
+        scanf("%d", &n);
         if (a0 <= n){
-            for (i; i < n; i++){
-                printf("%f", a0);
+            for (i = a0; i <= n + 1; i++){
+                printf("%lg ", a0);
                 a0 = a0 *q;
                 geoCump = geoCump * a0;
                 geoSum = geoSum + a0;
             }
-            printf("composition of progression = %f", geoCump);
-            printf("sum of progression = %f\n", geoSum);
+            printf("%lg\n", a0);
+            printf("composition of progression = %lg\n", geoCump);
+            printf("sum of progression = %lg\n", geoSum);
         }
-        *error = 5;
+        else *error = 5;
     }
-    *error = 6;
+    else *error = 6;
     }
