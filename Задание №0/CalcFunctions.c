@@ -20,7 +20,7 @@
 @return Num1 / Num2 or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (1);
 */
-double dev(double Num1, double Num2, int error){
+double dev(double Num1, double Num2, int *error){
     if (0 != Num2){
         *error = 0;
         return Num1 / Num2;   
@@ -36,7 +36,7 @@ double dev(double Num1, double Num2, int error){
 @return sqrt(Num1) or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (3);
 */
-double root(double Num1, int error){
+double root(double Num1, int *error){
     if (Num1 > 0){
         *error = 0;
         return sqrt(Num1);
@@ -52,7 +52,7 @@ double root(double Num1, int error){
 @return |Num1|;
 @throws ошибок не найдено (0);
 */
-double module(double Num1, int error){
+double computeModule(double Num1, int *error){
     if (0 <= Num1){
         *error = 0;
         return Num1;
@@ -64,16 +64,28 @@ double module(double Num1, int error){
 
 
 /*
-@exempl (геоиетрическая последовательность) Sn = 2 * (1 - 2^4) / (1 - 2) = 30;
+@exempl (сумма геометрической последовательности) Sn = 2 * (1 - 2^4) / (1 - 2) = 30;, (геометрическая прогрессия) a = 2, 4, 8, ..., 256, @exampl (произведение геометрической прогрессии) Pn = pow(a0 * an, n / 2)
 @param Num1 (первоначальное число), Num2 (шаг), Num3 (номер члена геометрической прогрессии);
-@return сумма геометрической прогрессии и произведение геометрической прогрессии or error;
-@throws ошибок не найдено (0), есть ошибка[-и] (4);
+@return сумма геометрической прогрессии or error;
+@throws ошибок не найдено (0), есть ошибка[-и] (4, 5, 6);
 */
-double geo_prog(double Num1, double Num2, double Num3, int error){
-    if (1 != Num2){
-        *error = 0;
-        return Num1 * (1 - pow(Num2, Num3)) / (1 - Num2);
+double computeGeoProg(double a0, int q, int *error){
+    if (0 > q){
+        int geoSum, n, geoCump, i;
+        geoSum = 0;
+        geoCump = 1;
+        i = a0;
+        if (a0 <= n){
+            for (i; i < n; i++){
+                printf("%f", a0);
+                a0 = a0 *q;
+                geoCump = geoCump * a0;
+                geoSum = geoSum + a0;
+            }
+            printf("composition of progression = %f", geoCump);
+            printf("sum of progression = %f\n", geoSum);
+        }
+        *error = 5;
     }
-    *error = 4;
-    return 0;
-}
+    *error = 6;
+    }
