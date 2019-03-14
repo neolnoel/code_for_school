@@ -6,7 +6,7 @@ int main(){
     double Num1, Num2, Num3;
     char sign;
     sign = 0;
-    pritf("to exit press 'e'\n");
+    printf("to exit press 'e'\n");
     while (sign != 'e'){
         switch (error){
             case 6:

@@ -69,7 +69,7 @@ double computeModule(double Num1, int *error){
 @return сумма геометрической прогрессии or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (4, 5, 6);
 */
-double computeGeoProg(double a0, int q, int *error){
+void computeGeoProg(double a0, int q, int *error){
     if (q > 0){
         double geoSum, geoCump;
         int n, i;
