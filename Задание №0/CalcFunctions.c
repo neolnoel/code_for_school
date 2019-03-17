@@ -74,10 +74,10 @@ void computeGeoProg(double bn, int q)
     double geoSum = bn, geoCump = 1;
     scanf("%d", &n);
     for(int i = 1; i <=n; i++){
-        bn = bn * q;
+        bn *= q;
         printf("%lg ", bn);
-        geoSum = geoSum + bn;
-        geoCump = geoCump * bn;
+        geoSum += bn;
+        geoCump *= bn;
     }
     printf("composition of progression = %lg\n", geoCump);
     printf("sum of progression = %lg\n", geoSum);
