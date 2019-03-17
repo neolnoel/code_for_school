@@ -46,7 +46,7 @@ int main(){
                     printf("%lg / %lg = %lg\n", num1, num2, num3);
                 break;
             case 'S':
-                Num2 = root(num1, &error);
+                num2 = root(num1, &error);
                 if (0 == error)
                     printf("sqrt(%lg) = %lg\n", num1, num2);
                 break;
@@ -54,7 +54,7 @@ int main(){
                 printf("|%lg| = %lg\n", num1, computeModule(num1, &error));
                 break;
             case 'G':
-                computeGeoProg(num1, num2, &error);
+                computeGeoProg(num1, num2);
                 break;
             
             default:
