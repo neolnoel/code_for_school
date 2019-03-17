@@ -3,7 +3,7 @@
 
 int main(){
     int error;
-    double Num1, Num2, Num3;
+    double num1, num2, num3;
     char sign;
     sign = 0;
     printf("to exit press 'e'\n");
@@ -29,32 +29,32 @@ int main(){
                 break;
         }
         error = 0;
-        scanf("%lg %c %lg", &Num1, &sign, &Num2);
+        scanf("%lg %c %lg", &num1, &sign, &num2);
         switch(sign){
             case '+':
-                printf("%lg + %lg = %lg\n", Num1, Num2, Num1 + Num2);
+                printf("%lg + %lg = %lg\n", num1, num2, num1 + num2);
                 break;
             case '-':
-                printf("%lg - %lg = %lg\n", Num1, Num2, Num1 - Num2);
+                printf("%lg - %lg = %lg\n", num1, num2, num1 - num2);
                 break;
             case '*':
-                printf("%lg * %lg = %lg\n", Num1, Num2, Num1 * Num2);
+                printf("%lg * %lg = %lg\n", num1, num2, num1 * num2);
                 break;
             case '/':
-                Num3 = dev(Num1, Num2, &error);
+                num3 = dev(num1, num2, &error);
                 if (0 == error)
-                    printf("%lg / %lg = %lg\n", Num1, Num2, Num3);
+                    printf("%lg / %lg = %lg\n", num1, num2, num3);
                 break;
             case 'S':
-                Num2 = root(Num1, &error);
+                Num2 = root(num1, &error);
                 if (0 == error)
-                    printf("sqrt(%lg) = %lg\n", Num1, Num2);
+                    printf("sqrt(%lg) = %lg\n", num1, num2);
                 break;
             case 'M':
-                printf("|%lg| = %lg\n", Num1, computeModule(Num1, &error));
+                printf("|%lg| = %lg\n", num1, computeModule(num1, &error));
                 break;
             case 'G':
-                computeGeoProg(Num1, Num2, &error);
+                computeGeoProg(num1, num2, &error);
                 break;
             
             default:

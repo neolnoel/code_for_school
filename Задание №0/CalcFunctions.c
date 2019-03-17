@@ -16,14 +16,14 @@
 
 /*
 @exempl (деление двух чисел) 4 / 2 = 2;
-@param Num1(делитель), Num2 (делимое), error (возможные ошибки);
-@return Num1 / Num2 or error;
+@param num1(делитель), num2 (делимое), error (возможные ошибки);
+@return num1 / num2 or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (1);
 */
-double dev(double Num1, double Num2, int *error){
-    if (0 != Num2){
+double dev(double num1, double num2, int *error){
+    if (0 != num2){
         *error = 0;
-        return Num1 / Num2;   
+        return num1 / num2;   
     }
     *error = 1;
     return 0;    
@@ -32,14 +32,14 @@ double dev(double Num1, double Num2, int *error){
 
 /*
 @exempl (квадратный корень числа) sqrt(4) = 2;
-@param Num1 (подкоренное значение), error (возможные ошибки);
-@return sqrt(Num1) or error;
+@param num1 (подкоренное значение), error (возможные ошибки);
+@return sqrt(num1) or error;
 @throws ошибок не найдено (0), есть ошибка[-и] (3);
 */
-double root(double Num1, int *error){
-    if (Num1 > 0){
+double root(double num1, int *error){
+    if (num1 > 0){
         *error = 0;
-        return sqrt(Num1);
+        return sqrt(num1);
     }
     *error = 3;
     return 0;        
@@ -48,47 +48,37 @@ double root(double Num1, int *error){
 
 /*
 @exempl (модуль числа) |-4| = 4;
-@param Num1 (число в модуле);
-@return |Num1|;
+@param num1 (число в модуле);
+@return |num1|;
 @throws ошибок не найдено (0);
 */
-double computeModule(double Num1, int *error){
-    if (0 <= Num1){
-        *error = 0;
-        return Num1;
+double computeModule(double num1, int *error){
+    if (0 <= num1){
+        return num1;
     }
-    *error = 0;
-    return Num1 * (-1);
+    return num1 * (-1);
 
 }
 
 
 /*
-@exempl (сумма геометрической последовательности) Sn = 2 * (1 - 2^4) / (1 - 2) = 30;, (геометрическая прогрессия) a = 2, 4, 8, ..., 256, @exampl (произведение геометрической прогрессии) Pn = pow(a0 * an, n / 2)
-@param Num1 (первоначальное число), Num2 (шаг), Num3 (номер члена геометрической прогрессии);
-@return сумма геометрической прогрессии or error;
-@throws ошибок не найдено (0), есть ошибка[-и] (4, 5, 6);
+@exempl (сумма геометрической последовательности) Sn = 2 * (1 - 2^4) / (1 - 2) = 30;, (геометрическая прогрессия) a = 2, 4, 8, ..., 256, (произведение геометрической прогрессии) Pn = pow(a0 * an, n / 2)
+@param bn (первоначальное число), q (шаг), n (номер члена геометрической прогрессии);
+@return сумма геометрической прогрессии & произведение геометрической прогрессии & члены геометрической прогрессии or error;
+@throws ошибок не найдено (0);
 */
-void computeGeoProg(double a0, int q, int *error){
-    if (q > 0){
-        double geoSum, geoCump;
-        int n, i;
-        geoSum = 0;
-        geoCump = 1;
-        printf("enter number of members: ");
-        scanf("%d", &n);
-        if (a0 <= n){
-            for (i = a0; i <= n + 1; i++){
-                printf("%lg ", a0);
-                a0 = a0 *q;
-                geoCump = geoCump * a0;
-                geoSum = geoSum + a0;
-            }
-            printf("%lg\n", a0);
-            printf("composition of progression = %lg\n", geoCump);
-            printf("sum of progression = %lg\n", geoSum);
-        }
-        else *error = 5;
+
+void computeGeoProg(double bn, int q)
+{
+    int n; 
+    double geoSum = bn, geoCump = 1;
+    scanf("%d", &n);
+    for(int i = 1; i <=n; i++){
+        bn = bn * q;
+        printf("%lg ", bn);
+        geoSum = geoSum + bn;
+        geoCump = geoCump * bn;
     }
-    else *error = 6;
-    }
+    printf("composition of progression = %lg\n", geoCump);
+    printf("sum of progression = %lg\n", geoSum);
+}
