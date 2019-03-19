@@ -3,7 +3,7 @@
 @link http://moria.1586.su/moodle/mod/page/view.php?id=1705
 @link https://github.com/mmjax/code_for_school
 
-Проектное задание #1
+Проектное задание #0
 Калькулятор с возможностью:
 Сложения двух чисел, вычитания двух чисел, 
 умножения двух чисел, деления двух чисел, 
@@ -68,8 +68,7 @@ double computeModule(double num1, int *error){
 @throws ошибок не найдено (0);
 */
 
-void computeGeoProg(double bn, int q)
-{
+void computeGeoProg(double bn, int q){
     int n; 
     double geoSum = bn, geoCump = 1;
     scanf("%d", &n);
