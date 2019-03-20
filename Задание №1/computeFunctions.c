@@ -12,4 +12,23 @@
 #include <stdio.h>
 
 
-int 
+/*
+@exempl 
+@param
+@return
+@throws
+*/
+int argvFunction(int num1 int num2){
+    
+}
+
+
+/*
+@exempl 
+@param
+@return
+@throws
+*/
+int argvSet(int num3){
+
+}
