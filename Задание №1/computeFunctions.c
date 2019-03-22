@@ -1,15 +1,5 @@
-/*
-@author Skalozubov_Max1m
-@link http://moria.1586.su/moodle/mod/page/view.php?id=1705
-@link https://github.com/mmjax/code_for_school
-
-Проектное задание #1
-Калькулятор с возможностью:
-подсчёта равенств по вводу например: |.\calc FUNCTION(y=8+9*x) SET(x=8)|
-*/
-
-
 #include <stdio.h>
+#include <math.h>
 
 
 /*
@@ -18,8 +8,10 @@
 @return
 @throws
 */
-int argvFunction(int num1 int num2){
+int argvFunction(int num1, int num2, int i, int a){
     
+    
+
 }
 
 
@@ -29,6 +21,17 @@ int argvFunction(int num1 int num2){
 @return
 @throws
 */
-int argvSet(int num3){
+int argvSet(){
+
+}
+
+
+/*
+@exempl 
+@param
+@return
+@throws
+*/
+int computeFunction(int num3){
 
 }
