@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include "computeFunctions.h"
 
 #define ARGNUM 256
 
@@ -78,6 +79,20 @@ int getY(char *str) {
 @throws
 */
 int getAX(char *str) {
+    int i;
+    for (i = 11;  i < strlen(str) && str[i] != '*'; i++) ;
+    if (1 == isdigit(str[i+1])){
+        x = str[i-1];
+        a = atoi((char *)(&str[i+1]));
+        printf("num = %d\nname = %c\n", a, x);
+        
+    }
+    else {
+        x = str[i+1];
+        for (i--; str[i] != '(' && 1 == isdigit(str[i]); i--) ;
+        a = atoi((char *)(&str[i]));
+        printf("num = %d\nname = %c\n", a, x);
+    }
     return 0;
 }
 
