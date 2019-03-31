@@ -78,6 +78,7 @@ int getY(char *str) {
 @return
 @throws
 */
+
 int getAX(char *str) {
     int i;
     for (i = 11;  i < strlen(str) && str[i] != '*'; i++) ;
