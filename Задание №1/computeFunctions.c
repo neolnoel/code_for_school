@@ -69,6 +69,16 @@ int computeFunction(void) {
 @throws
 */
 int getY(char *str) {
+    int i;
+    for (i = 9;  i < strlen(str) && str[i] != '='; i++) ;
+    if ('(' == str[i-2]){
+        y = str[i-1];
+        printf("y = %c\n", y);
+    }
+    else{
+        y = str[i+1];
+        printf("y = %c\n", y);            
+    }
     return 0;
 }
 
@@ -102,7 +112,21 @@ int getAX(char *str) {
 @param
 @return
 @throws
+(y=8+469*x)
 */
 int getB(char *str) {
+    int i;
+    for (i = 9; i < strlen(str) && str[i] != '*' && str[i] != '+'; i++) ;
+    if ('*' == str[i]){
+        for(i++; i < strlen(str) && str[i] != '+'; i++) ;
+        b = atoi((char *)(&str[i+1]));
+        printf("b = %d\n", b);
+    }
+    else {
+        for (i--; str[i] != '(' && 1 == isdigit(str[i]); i--) ;
+        b = atoi((char *)(&str[i+1]));
+        printf("b = %d\n", b);
+    }
+    
     return 0;
 }
