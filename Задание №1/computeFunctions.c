@@ -13,10 +13,11 @@ char y, x;
 int a, b;
 
 /*
-@example 
-@param
-@return
-@throws
+@example FUNCTION(y=8+46*x) |y = y, b = 8, a = 46, x = x|
+@param str(текущий аргумент)
+@return 0
+@throws -
+@uses "computeFunctions.h"
 */
 int parseFunction(char *str) {
     getY(str);
@@ -28,10 +29,10 @@ int parseFunction(char *str) {
 
 
 /*
-@example 
-@param
-@return
-@throws
+@example SET(z=9) |argName[i] = z, argVal[i] = 9| 
+@param str(текущий аргумент)
+@return 0
+@throws -
 */
 int parseSet(char *str) {
     int i;
@@ -50,43 +51,46 @@ int parseSet(char *str) {
 
 
 /*
-@example 
-@param
-@return
-@throws
+@example \calc FUNCTION(y=8+1*x) SET(x=8) |y(8) = 9|
+@param void
+@return 0
+@throws HAVE NO 'z' VARIABLE , HAVE NO FUNCTION AT ALL , CANNOT SET CONSTANT
 */
 int computeFunction(void) {
     int i;
     for (i = 0; i < argCnt; i++)
-        printf("%c = %d\n", argName[i], argVal[i]);
+        if (x != argName[i])
+            printf("HAVE NO '%c' VARIABLE\n", argName[i]);
+        else if (y == argName[i] && x == argName[i])
+            printf("HAVE NO FUNCTION AT ALL\n");
+        else if (y == argName[i])
+            printf("CANNOT SET CONSTANT\n");
+        else
+        printf("%c(%d) = %d\n", y, argVal[i], (argVal[i] * a) + b);
     return 0;
 }
 
 /*
-@example 
-@param
-@return
-@throws
+@example FUNCTION(z=8+1*x) |y = z|
+@param str(текущий аргумент)
+@return 0
+@throws -
 */
 int getY(char *str) {
     int i;
     for (i = 9;  i < strlen(str) && str[i] != '='; i++) ;
-    if ('(' == str[i-2]){
+    if ('(' == str[i-2])
         y = str[i-1];
-        printf("y = %c\n", y);
-    }
-    else{
-        y = str[i+1];
-        printf("y = %c\n", y);            
-    }
+    else
+        y = str[i+1];       
     return 0;
 }
 
 /*
-@example 
-@param
-@return
-@throws
+@example UNCTION(z=8+1*y) |a = 1 , x = y|
+@param str(текущий аргумент)
+@return 0
+@throws -
 */
 
 int getAX(char *str) {
@@ -95,23 +99,20 @@ int getAX(char *str) {
     if (1 == isdigit(str[i+1])){
         x = str[i-1];
         a = atoi((char *)(&str[i+1]));
-        printf("num = %d\nname = %c\n", a, x);
-        
     }
     else {
         x = str[i+1];
         for (i--; str[i] != '(' && 1 == isdigit(str[i]); i--) ;
         a = atoi((char *)(&str[i]));
-        printf("num = %d\nname = %c\n", a, x);
     }
     return 0;
 }
 
 /*
-@example 
-@param
-@return
-@throws
+@example UNCTION(z=8+1*x) |b = 8|
+@param str(текущий аргумент)
+@return 0
+@throws -
 (y=8+469*x)
 */
 int getB(char *str) {
@@ -120,12 +121,10 @@ int getB(char *str) {
     if ('*' == str[i]){
         for(i++; i < strlen(str) && str[i] != '+'; i++) ;
         b = atoi((char *)(&str[i+1]));
-        printf("b = %d\n", b);
     }
     else {
         for (i--; str[i] != '(' && 1 == isdigit(str[i]); i--) ;
         b = atoi((char *)(&str[i+1]));
-        printf("b = %d\n", b);
     }
     
     return 0;
