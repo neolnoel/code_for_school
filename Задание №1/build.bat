@@ -1,0 +1,1 @@
+gcc -o calc main.c computeFunctions.c
