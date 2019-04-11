@@ -65,8 +65,9 @@ int computeFunction(void) {
             printf("HAVE NO '%c' VARIABLE\n", argName[i]);
         else if (y == argName[i] && x == argName[i])
             printf("HAVE NO FUNCTION AT ALL\n");
-        else
-        printf("%c(%d) = %d\n", y, argVal[i], (argVal[i] * a) + b);
+        else {
+            printf("%c(%d) = %d\n", y, argVal[i], (argVal[i] * a) + b);
+        }
     }
     return 0;
 }
@@ -96,15 +97,16 @@ int getY(char *str) {
 
 int getAX(char *str) {
     int i;
-    for (i = 9;  i < strlen(str) && str[i] != '*'; i++) ;
+    for (i = 8;  i < strlen(str) && str[i] != '*'; i++) ;
     if (1 == isdigit(str[i+1])){
         x = str[i-1];
         a = atoi((char *)(&str[i+1]));
     }
     else {
         x = str[i+1];
-        for (i--; str[i] != '(' && 0 == isdigit(str[i]); i--) ;
-        a = atoi((char *)(&str[i-1]));
+        for (i--; str[i] != '(' && 1 == isdigit(str[i]); i--);
+        i++;
+        a = atoi((char *)(&str[i]));
     }
     return 0;
 }
