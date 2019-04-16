@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "computeFunctions.h"
+#include "computeFunctions.c"
 
 int main(int argc, char *argv[]) {
     int i;
